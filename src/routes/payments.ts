@@ -37,7 +37,6 @@ payments.get('/:id', async (c) => {
 
 payments.post('/', async (c) => {
     const data = await c.req.json();
-    console.log(data);
   
     if (!data.clientId || !data.contractId) return c.json('Dados inválidos', 400);
   

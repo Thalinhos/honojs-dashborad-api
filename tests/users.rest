@@ -1,0 +1,35 @@
+### Listar todos os usuários
+GET http://localhost:3000/users
+
+
+### Buscar usuário por ID
+GET http://localhost:3000/users/686062ac9d4517d4bf378181
+
+
+### Cadastrar novo usuário
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Nome do Usuário",
+  "email": "usuario@example.com",
+  "password": "senha123"
+}
+
+
+### Atualizar usuário
+PUT http://localhost:3000/users/686062ac9d4517d4bf378181
+Content-Type: application/json
+
+{
+  "name": "Nome Atualizado",
+  "password": "novaSenha123"
+}
+
+
+### Desativar usuário
+DELETE http://localhost:3000/users/686062ac9d4517d4bf378181
+
+
+### Reativar usuário
+PUT http://localhost:3000/users/reactivate/686062ac9d4517d4bf378181

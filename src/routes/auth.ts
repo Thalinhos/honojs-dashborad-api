@@ -9,7 +9,6 @@ export const auth = new Hono();
 
 auth.post('/login', async (c) => {
   const { email, password } = await c.req.json();
-  console.log(email, password )
 
   const usersCollection = await getUserCollection();
   const user = await usersCollection.findOne({ email });

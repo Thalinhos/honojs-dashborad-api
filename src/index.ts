@@ -1,6 +1,5 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
-import { seedUsers } from '../scripts/seeder.js';
 import { users } from './routes/users.js';
 import { clients } from './routes/clients.js';
 import { auth } from './routes/auth.js';
@@ -8,6 +7,7 @@ import { products } from './routes/products.js';
 import { contracts } from './routes/contracts.js';
 import { payments } from './routes/payments.js';
 import { cors } from 'hono/cors';
+import { seedUsers } from './utils/scripts/seeder.js';
 
 seedUsers().then(() => console.log('✅ Seed realizado com sucesso'))
 

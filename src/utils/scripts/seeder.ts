@@ -1,6 +1,6 @@
 
 import bcrypt from "bcrypt";
-import { getSessionCollection, getUserCollection } from "../src/db/db.js";
+import { getSessionCollection, getUserCollection } from "../../db/db.js";
 
 const users = [
     { name: "admin", email: "admin@hotmail.com", password: process.env.ADMINPASS }
