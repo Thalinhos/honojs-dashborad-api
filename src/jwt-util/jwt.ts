@@ -21,10 +21,3 @@ export async function validarToken(tokenToVerify: string) {
     return decodedPayload;
 }
 
-// const tokenCriado = await gerarToken({
-//     email: 'a2@b.com',
-// });
-// console.log(tokenCriado);
-
-// const tokenValido = await validarToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImEyQGIuY29tIiwiZXhwIjoxNzUxMDc0MzI1fQ.rzy1aKRqPUOeK2MZuYr85BW9tpyuGcbbXPT-81ZyuA0');
-// console.log(tokenValido);

@@ -1,0 +1,11 @@
+### Testar Login (ajuste o email e senha conforme o que está salvo no banco)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@hotmail.com",
+  "password": "admin123"
+}
+
+### Testar Verificação do Token (copie o token da resposta do login e cole abaixo)
+GET http://localhost:3000/auth/verifyToken

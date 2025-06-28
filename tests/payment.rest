@@ -1,0 +1,39 @@
+### Listar todos os pagamentos
+GET http://localhost:3000/payments
+
+
+### Buscar pagamento por ID
+GET http://localhost:3000/payments/68607c1ff572b67e99c55010
+
+
+### Cadastrar novo pagamento
+POST http://localhost:3000/payments
+Content-Type: application/json
+
+{
+  "clientId": "6860784eb3af9385aa3bc3aa",
+  "contractId": "68607c07f572b67e99c5500f",
+  "productId": "ID_DO_PRODUTO",
+  "date": "2025-06-28T00:00:00.000Z",
+  "amount": 250.00,
+  "method": "pix",
+  "notes": "Pagamento via PIX"
+}
+
+
+### Atualizar pagamento
+PUT http://localhost:3000/payments/68607c1ff572b67e99c55010
+Content-Type: application/json
+
+{
+  "amount": 300.00,
+  "notes": "Atualizado valor do pagamento"
+}
+
+
+### Desativar pagamento
+DELETE http://localhost:3000/payments/68607c1ff572b67e99c55010
+
+
+### Reativar pagamento
+PUT http://localhost:3000/payments/reactivate/68607c1ff572b67e99c55010

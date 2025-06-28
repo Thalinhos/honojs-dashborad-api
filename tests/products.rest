@@ -1,0 +1,36 @@
+### Listar todos os produtos
+GET http://localhost:3000/products
+
+
+### Buscar produto por ID
+GET http://localhost:3000/products/686076e025e8829fac3e69de
+
+
+### Cadastrar novo produto
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "Produto de Teste",
+  "description": "Descrição do produto",
+  "type": "one_time",
+  "price": 199.99,
+  "active": true
+}
+
+### Atualizar produto
+PUT http://localhost:3000/products/686076e025e8829fac3e69de
+Content-Type: application/json
+
+{
+  "name": "Produto Atualizado",
+  "price": 299.99
+}
+
+
+### Desativar produto
+DELETE http://localhost:3000/products/686076e025e8829fac3e69de
+
+
+### Reativar produto
+PUT http://localhost:3000/products/reactivate/686076e025e8829fac3e69de

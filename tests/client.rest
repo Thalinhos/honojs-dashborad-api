@@ -1,0 +1,37 @@
+### Listar todos os clientes
+GET http://localhost:3000/clients
+
+
+### Buscar cliente por ID
+GET http://localhost:3000/clients/68607584bb025bb14098e9ee
+
+
+### Cadastrar novo cliente
+POST http://localhost:3000/clients
+Content-Type: application/json
+
+{
+  "name": "João da Silva",
+  "company": "Empresa X",
+  "email": "joao@email.com",
+  "phone": "11999999999",
+  "address": "Rua Exemplo, 123",
+  "notes": "Cliente importante",
+  "active": true
+}
+
+### Atualizar cliente
+PUT http://localhost:3000/clients/68607584bb025bb14098e9ee
+Content-Type: application/json
+
+{
+  "name": "João da Silva Atualizado",
+  "phone": "11888888888"
+}
+
+### Desativar cliente
+DELETE http://localhost:3000/clients/68607584bb025bb14098e9ee
+
+
+### Reativar cliente
+PUT http://localhost:3000/clients/reactivate/68607584bb025bb14098e9ee

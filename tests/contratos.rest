@@ -1,0 +1,38 @@
+### Listar todos os contratos
+GET http://localhost:3000/contracts
+
+
+### Buscar contrato por ID
+GET http://localhost:3000/contracts/686079816f9dc459975f5a42
+
+
+### Cadastrar novo contrato
+POST http://localhost:3000/contracts
+Content-Type: application/json
+
+{
+  "client": "6860784eb3af9385aa3bc3aa",
+  "product": "ID_DO_PRODUTO",
+  "type": "one_time",
+  "startDate": "2024-06-28T00:00:00.000Z",
+  "price": 150.50,
+  "status": "active"
+}
+
+
+### Atualizar contrato
+PUT http://localhost:3000/contracts/686079816f9dc459975f5a42
+Content-Type: application/json
+
+{
+  "price": 200.00,
+  "status": "active"
+}
+
+
+### Desativar contrato
+DELETE http://localhost:3000/contracts/686079816f9dc459975f5a42
+
+
+### Reativar contrato
+PUT http://localhost:3000/contracts/reactivate/686079816f9dc459975f5a42
