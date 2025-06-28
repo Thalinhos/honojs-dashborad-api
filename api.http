@@ -1,0 +1,231 @@
+### USERS
+
+# Listar todos usuários
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+###
+
+# Criar usuário
+POST http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+Content-Type: application/json
+
+{
+  "name": "userrr",
+  "email": "user@example.com",
+  "password": "123456"
+}
+
+###
+
+# Buscar usuário por id (substitua pelo id real)
+GET http://localhost:3000/users/685f568d2c31882f819eb375
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+###
+
+# Atualizar usuário por id
+PUT http://localhost:3000/users/685f4eb23f984c09a46f27bd
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+{
+  "password": "novasenha"
+}
+
+###
+
+# Deletar usuário por id
+DELETE http://localhost:3000/users/685f4eb23f984c09a46f27bd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+
+---
+
+### CLIENTS
+
+# Listar todos clientes
+GET http://localhost:3000/clients
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+
+###
+
+# Criar cliente
+POST http://localhost:3000/clients
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+
+{
+  "name": "Cliente Teste",
+  "company": "Empresa XYZ",
+  "email": "cliente@exemplo.com",
+  "phone": "11999999999",
+  "address": "Rua ABC, 123",
+  "notes": "Cliente VIP"
+}
+
+###
+
+# Buscar cliente por id
+GET http://localhost:3000/clients/685f59e2cff623e0118ad2be
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+###
+
+# Atualizar cliente por id
+PUT http://localhost:3000/clients/685f59e2cff623e0118ad2be
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+{
+  "phone": "119888988888"
+}
+
+###
+
+# Deletar cliente por id
+DELETE http://localhost:3000/clients/685f59e2cff623e0118ad2be
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+---
+
+### PRODUCTS
+
+# Listar todos produtos
+GET http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+###
+
+# Criar produto
+POST http://localhost:3000/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+
+{
+  "name": "Produto A",
+  "description": "Descrição do Produto A",
+  "type": "recurring",
+  "price": 99.9,
+  "active": true
+}
+
+###
+
+# Buscar produto por id
+GET http://localhost:3000/products/685f5b2ecff623e0118ad2bf
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+
+###
+
+# Atualizar produto por id
+PUT http://localhost:3000/products/685f5b2ecff623e0118ad2bf
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+
+{
+  "price": 79.9,
+  "active": false
+}
+
+###
+
+# Deletar produto por id
+DELETE http://localhost:3000/products/685f5b2ecff623e0118ad2bf
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+---
+
+### CONTRACTS
+
+# Listar todos contratos
+GET http://localhost:3000/contracts
+
+###
+
+# Criar contrato
+POST http://localhost:3000/contracts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+{
+  "clientId": "{{clientId}}",
+  "productId": "{{productId}}",
+  "type": "recurring",
+  "startDate": "2025-06-28T00:00:00Z",
+  "price": 99.9,
+  "status": "active"
+}
+
+###
+
+# Buscar contrato por id
+GET http://localhost:3000/contracts/685f5b97cff623e0118ad2c0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+###
+
+# Atualizar contrato por id
+PUT http://localhost:3000/contracts/685f5b97cff623e0118ad2c0
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+{
+  "status": "canceled",
+  "endDate": "2025-07-15T00:00:00Z"
+}
+
+###
+
+# Deletar contrato por id
+DELETE http://localhost:3000/contracts/{{contractId}}
+
+---
+
+### PAYMENTS
+
+# Listar todos pagamentos
+GET http://localhost:3000/payments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+###
+
+# Criar pagamento
+POST http://localhost:3000/payments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiZXhwIjoxNzUxMDgwNjM2fQ.Cu9ZAQvO2n3sSOb0G98hZbvk7vkStNDP8sGDM3GWtlQ
+
+{
+  "clientId": "{{clientId}}",
+  "contractId": "{{contractId}}",
+  "date": "2025-06-28T12:00:00Z",
+  "amount": 99.9,
+  "method": "pix",
+  "notes": "Pagamento mensal"
+}
+
+###
+
+# Buscar pagamento por id
+GET http://localhost:3000/payments/{{paymentId}}
+
+###
+
+# Atualizar pagamento por id
+PUT http://localhost:3000/payments/{{paymentId}}
+Content-Type: application/json
+
+{
+  "amount": 120.0
+}
+
+###
+
+# Deletar pagamento por id
+DELETE http://localhost:3000/payments/{{paymentId}}
