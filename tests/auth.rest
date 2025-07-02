@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "email": "admin@hotmail.com",
-  "password": "admin123"
+  "email": "thalissonborgesvieira@gmail.com",
+  "password": "minhaNovaSenhaSegura123"
 }
 
 ### Testar Verificação do Token (copie o token da resposta do login e cole abaixo)
@@ -12,3 +12,24 @@ GET http://localhost:3000/auth/verifyToken
 
 ### testar logout
 POST http://localhost:3000/auth/logout
+
+
+### testar pedir token do reset de senha
+POST  http://localhost:3000/auth/ask-reset-password
+Content-Type: application/json
+
+{
+  "email": "thalissonborgesvieira@gmail.com"
+}
+
+### reset dois com token hasheado
+GET http://localhost:3000/auth/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRoYWxpc3NvbmJvcmdlc3ZpZWlyYUBnbWFpbC5jb20iLCJleHAiOjE3NTE0ODU4ODV9.iry_Ia21G_kwsZfkvRRQZ1Q8w6xIXcOKzd5CCoJpRjg
+
+### POST NEW SENHA
+POST http://localhost:3000/auth/reset-password
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRoYWxpc3NvbmJvcmdlc3ZpZWlyYUBnbWFpbC5jb20iLCJleHAiOjE3NTE0ODU4ODV9.iry_Ia21G_kwsZfkvRRQZ1Q8w6xIXcOKzd5CCoJpRjg",
+  "newPassword": "minhaNovaSenhaSegura123"
+}

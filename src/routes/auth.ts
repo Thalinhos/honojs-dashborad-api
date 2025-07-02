@@ -1,9 +1,14 @@
 import { Hono } from "hono";
 import { getUserCollection } from "../db/db.js";
 import { HTTPException } from "hono/http-exception";
-import { gerarToken, validarToken } from "../jwt-util/jwt.js";
+import { gerarMailToken, gerarToken, validarMailToken, validarToken } from "../jwt-util/jwt.js";
 import bcrypt from 'bcrypt';
 import { getCookie, setCookie } from "hono/cookie";
+
+import { parseId } from "../utils/parseMongoId.js";
+import { sendResetPasswordEmail } from "../mailService/resetPassword.js";
+import { email, set } from "zod/v4";
+import { ObjectId } from "mongodb";
 
 export const auth = new Hono();
 
@@ -22,7 +27,7 @@ auth.post('/login', async (c) => {
       throw new HTTPException(401, { message: 'Credenciais inválidas' });
     }
 
-    const token = await gerarToken({ email: user.email });
+    const token = await gerarToken({ _id:  user._id.toString(), email: user.email });
     if(!token){
       throw new HTTPException(500, { message: 'Erro ao criar token' });
     }
@@ -75,22 +80,67 @@ auth.post('/logout', async (c: any) => {
   return c.body(null, 200);
 })
 
-// auth.get('/verifyToken', async (c) => {
-//     const rawToken = c.req.header('Authorization');
-//     const token = rawToken?.split(' ')[1];
-//     console.log(token)
-//     if(!token){
-//       throw new HTTPException(401, { message: 'Token not found' });
-//     }
-  
-//     try {
-//       const isTokenValid = await validarToken(token);
-//       if(!isTokenValid){
-//         throw new HTTPException(401, { message: 'Token inválido/expirado' });
-//       }
-//     } catch (error) {
-//       throw new HTTPException(401, { message: 'Token inválido/expirado' });
-//     }
-  
-//     return c.body(null, 200);
-//   })
+auth.post('/ask-reset-password', async (c) => {
+  try {
+    const body = await c.req.json();
+    const userEmail = body.email;
+
+    const usersCollection = await getUserCollection();
+    const user = await usersCollection.findOne({ email: userEmail });
+    if (!user) return c.json({ message: 'Usuário não encontrado' }, 404);
+
+    // const emailSent = await sendResetPasswordEmail(userId.toString(), user.email);
+    const emailSent = await sendResetPasswordEmail(userEmail); 
+
+    if (!emailSent) throw new Error('Erro ao enviar email');
+    console.log('Email enviado com sucesso para:', user.email);
+    
+    return c.json({ message: 'Email enviado com sucesso' }, 200);
+
+  } catch (error) {
+    console.error(error);
+    return c.json({ message: 'Erro interno ao processar solicitação' }, 500);
+  }
+});
+
+auth.get('/reset-password/:mailToken', async (c) => {
+  try {
+    const { mailToken } = c.req.param();
+    const valid = await validarMailToken(mailToken);
+    
+    if (!valid) return c.json({ message: 'Token inválido ou expirado' }, 400);
+    
+    return c.json({ message: 'Token válido, pode redefinir a senha' }, 200);
+    
+  } catch (error) {
+    console.error(error);
+    return c.json({ message: 'Erro interno' }, 500);
+  }
+});
+
+auth.post('/reset-password', async (c) => {
+  try {
+    const { token, newPassword } = await c.req.json();
+    
+    const decoded = await validarMailToken(token);
+    console.log(decoded);
+    if (!decoded) return c.json({ message: 'Token inválido ou expirado' }, 400);
+    
+    const usersCollection = await getUserCollection();
+    const user = await usersCollection.findOne({ email: decoded.email });
+    if (!user) return c.json({ message: 'Usuário não encontrado' }, 404);
+    
+    const hashedPassword = await bcrypt.hash(newPassword, 10); 
+    
+    await usersCollection.updateOne(
+      { email: decoded.email },
+      { $set: { password: hashedPassword } }
+    );
+    
+    return c.json({ message: 'Senha redefinida com sucesso' }, 200);
+    
+  } catch (error) {
+    console.error(error);
+    return c.json({ message: 'Erro interno ao redefinir senha' }, 500);
+  }
+});

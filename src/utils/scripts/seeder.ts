@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import { getSessionCollection, getUserCollection } from "../../db/db.js";
 
 const users = [
-    { name: "admin", email: "admin@hotmail.com", password: process.env.ADMINPASS }
+    { name: "thalis", email: "thalissonborgesvieira@gmail.com", password: process.env.ADMINPASS }
 ];
 
 export async function seedUsers() {
