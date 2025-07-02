@@ -12,7 +12,13 @@ import { seedUsers } from './utils/scripts/seeder.js';
 seedUsers().then(() => console.log('✅ Seed realizado com sucesso'))
 
 const app = new Hono()
-app.use('/api/*', cors())
+app.use('/api/*', cors({
+  origin: 'http://localhost:3001/', // Permite todas as origens
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
+  allowHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
+  credentials: true, // Permite cookies e cabeçalhos de autenticação
+  maxAge: 3600, // Tempo em segundos que a resposta de pré-vôo pode ser armazenada em cache
+}))
 app.route('/auth', auth);
 app.route('/users', users);
 app.route('/clients', clients);

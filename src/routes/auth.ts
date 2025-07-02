@@ -41,7 +41,6 @@ auth.post('/login', async (c) => {
 
 auth.get('/verifyToken', async (c) => {
     const token = getCookie(c, 'token');
-    console.log(token);
   
     if (!token) {
       return c.json({ message: 'Token não fornecido' }, 401);
@@ -58,6 +57,23 @@ auth.get('/verifyToken', async (c) => {
   
     return c.body(null, 200);
   });
+
+auth.post('/logout', async (c: any) => {
+  
+  const token = getCookie(c, 'token');
+
+  if (!token) {
+    return c.body(null, 204);
+  }
+
+  setCookie(c, 'token', '', { 
+      httpOnly: true,      
+      secure: false,       
+      maxAge: 0,          
+  })
+  
+  return c.body(null, 200);
+})
 
 // auth.get('/verifyToken', async (c) => {
 //     const rawToken = c.req.header('Authorization');

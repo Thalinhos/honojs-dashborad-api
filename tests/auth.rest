@@ -9,3 +9,6 @@ Content-Type: application/json
 
 ### Testar Verificação do Token (copie o token da resposta do login e cole abaixo)
 GET http://localhost:3000/auth/verifyToken
+
+### testar logout
+POST http://localhost:3000/auth/logout
