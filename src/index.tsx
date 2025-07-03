@@ -8,10 +8,13 @@ import { contracts } from './routes/contracts.js';
 import { payments } from './routes/payments.js';
 import { cors } from 'hono/cors';
 import { seedUsers } from './utils/scripts/seeder.js';
+import { logger } from 'hono/logger';
+
 
 seedUsers().then(() => console.log('✅ Seed realizado com sucesso'))
 
 const app = new Hono()
+app.use(logger())
 app.use('/api/*', cors({
   origin: 'http://localhost:3001/', // Permite todas as origens
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
@@ -30,6 +33,13 @@ app.route('/payments',   payments);
 app.get('/', (c) => {
   return c.json('Hello Hono!')
 })
+
+
+// app.get('/serverComponent', (c) => {
+//   const pessoas = ['maria', 'joao', 'josé']
+//   return c.html(Home(pessoas))
+// })
+
 
 
 
